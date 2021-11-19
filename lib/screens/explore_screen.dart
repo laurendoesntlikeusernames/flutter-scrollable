@@ -15,15 +15,12 @@ class ExploreScreen extends StatelessWidget {
       builder: (context, AsyncSnapshot<ExploreData> snapshot) {
         // TODO: Add Nested List Views
         if (snapshot.connectionState == ConnectionState.done) {
+
           final recipes = snapshot.data?.todayRecipes ?? [];
-          // TODO: Replace this with TodayRecipeListView
-          return Center(
-            child: Container(
-              child: const Text('Show TodayRecipeListView'),
-            ),
-          );
+
+          return TodayRecipeListView(recipes: recipes);
+
         } else {
-          // 6
           return const Center(
             child: CircularProgressIndicator(),
           );
